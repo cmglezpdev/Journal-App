@@ -1,0 +1,126 @@
+.auth__main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    height: 100vh;
+    width: 100vw;  
+}
+
+.auth__box-container {
+    background-color: #fff;
+    box-shadow: 0 3px $dark-grey;
+    border-radius: 2px;
+    padding: 20px;
+    padding-bottom: 10px;
+    width: 250px;
+    
+    .auth__title {
+        color: darken($color: $primary, $amount: 20);
+        margin-bottom: 20px;
+    }
+    
+    .auth__form-container {
+        
+        .auth__form-group {
+            position: relative;
+            margin-bottom: 20px;
+
+            .auth__input {
+               width: 100%;
+               padding: .6em .3em;
+               border: none;
+               outline: none;
+               border-bottom: 1px solid $primary;
+
+                &:not(&:placeholder-shown) + .auth__form-label, &:focus + .auth__form-label {
+                    transform: translateY(-12px) scale(.7);
+                    transform-origin: left;
+                    color: $primary;
+                }
+            }
+
+            .auth__form-label {
+                color: lighten($color: $primary, $amount: 20);
+                cursor: text;
+                position: absolute;
+                top: 0;
+                left: 5px;
+                transform: translateY(10px);
+                transition: all .5s, color .3s;
+            }
+        }
+
+        .auth__form-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: $primary;
+            border: 2px solid transparent;
+            outline: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color .3s;
+
+            &:hover {
+                background-color: darken($color: $primary, $amount: 10);
+            }
+        }       
+        
+    }
+
+    .auth__social-networks {
+
+        span {
+            display: block;
+            text-align: center;
+            padding: 15px 0 10px;
+        }
+
+        .google-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border: 1px solid lighten($color: #000000, $amount: 60);
+            background-color: darken($color: $primary, $amount: 20);
+
+            .google-icon-wrapper {
+                margin-right: 10px;
+                background-color: #fff;
+                padding: 2px 8px;
+
+                .google-icon {
+                    width: 35px;
+                    height: 35px;
+                }
+
+            }
+            
+            .btn-text {
+                color: #fff;
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+    }
+    
+    .auth__link {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        color: darken($color: $primary, $amount: 10);
+        
+        &:hover {
+            color: darken($color: $primary, $amount: 20);
+        }
+    }
+}
+
+
