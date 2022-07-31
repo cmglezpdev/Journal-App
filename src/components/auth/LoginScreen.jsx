@@ -1,13 +1,36 @@
+import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom"
+
+import { useForm } from '../../Hooks/useForm';
+import { login } from '../../actions/auth';
+import { store } from '../../store/store' 
+
 
 import googleIcon from '../../assets/google-icon.svg';
 
 export const LoginScreen = () => {
 
+  const dispatch = useDispatch();
+
+  const [ formValues, handleInputChange ] = useForm({
+    email: "sfssd",
+    password: "1234567"
+  })
+
+  const { email, password } = formValues;
+
+  const handleLogin = ( event ) => {
+    event.preventDefault();
+    dispatch( login(12345, "carlos Manuel") )
+
+    console.log( store.getState() );
+  }
+
+
   return (
     <>
       <h3 className="auth__title">Login</h3>
-      <form className="auth__form-container">
+      <form className="auth__form-container" onSubmit={ handleLogin }>
       
         <div className="auth__form-group">
             <input 
@@ -16,6 +39,8 @@ export const LoginScreen = () => {
               name="email" 
               className="auth__input"
               autoComplete="off"
+              value={ email }
+              onChange={ (e) => handleInputChange(e) }
             />
             <label htmlFor="email" className="auth__form-label">Email:</label>
         </div>
@@ -27,6 +52,8 @@ export const LoginScreen = () => {
             name="password"
             className="auth__input"
             autoComplete="off"
+            value={ password }
+            onChange={ (e) => handleInputChange(e) }
           />
           <label htmlFor="password"className="auth__form-label">Password:</label>
         </div>
