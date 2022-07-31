@@ -113,13 +113,13 @@
     .auth__link {
         display: block;
         margin-top: 20px;
-        text-decoration: none;
+        // text-decoration: none;
         font-weight: bold;
-        color: darken($color: $primary, $amount: 10);
+        // color: darken($color: $primary, $amount: 10);
         
-        &:hover {
-            color: darken($color: $primary, $amount: 20);
-        }
+        // &:hover {
+        //     color: darken($color: $primary, $amount: 20);
+        // }
     }
 }
 
