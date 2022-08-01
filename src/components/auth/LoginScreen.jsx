@@ -30,9 +30,11 @@ export const LoginScreen = () => {
   }
 
   return (
-    <>
+    <div className='animate__animated animate__fadeIn animate__faster'>
       <h3 className="auth__title">Login</h3>
-      <form className="auth__form-container" onSubmit={ handleLogin }>
+      <form 
+        className="auth__form-container" 
+        onSubmit={ handleLogin }>
       
         <div className="auth__form-group">
             <input 
@@ -90,6 +92,6 @@ export const LoginScreen = () => {
         <Link to={"/auth/register"} className="auth__link link" >
           Create new Account
         </Link>
-    </>
+    </div>
   )
 }
