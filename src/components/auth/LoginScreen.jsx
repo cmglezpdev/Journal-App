@@ -1,15 +1,15 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom"
 
 import { useForm } from '../../Hooks/useForm';
-import { login, startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
-import { store } from '../../store/store' 
+import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 
 
 import googleIcon from '../../assets/google-icon.svg';
 
 export const LoginScreen = () => {
 
+  const { loading } = useSelector(state => state.ui);
   const dispatch = useDispatch();
 
   const [ formValues, handleInputChange ] = useForm({
@@ -22,15 +22,12 @@ export const LoginScreen = () => {
   const handleLogin = ( event ) => {
     event.preventDefault();
     dispatch( startLoginEmailPassword(email, password) )
-
-    console.log( store.getState() );
   }
 
   const handleGoogleLogin = ( event ) => {
     event.preventDefault();
     dispatch( startGoogleLogin() );
   }
-
 
   return (
     <>
@@ -68,6 +65,7 @@ export const LoginScreen = () => {
         <button
           className="auth__form-submit"
           type="submit"
+          disabled={ loading }
         >
           Login
         </button>
