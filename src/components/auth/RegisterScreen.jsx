@@ -4,8 +4,7 @@ import validator from 'validator';
 
 import { useForm } from '../../Hooks/useForm';
 import { removeError, setError } from '../../actions/ui';
-
-import { store } from '../../store/store'
+import { startRegisterEmailPassword } from "../../actions/auth";
 
 export const RegisterScreen = () => {
 
@@ -25,7 +24,7 @@ export const RegisterScreen = () => {
       event.preventDefault();
       
       if( isFormValid() ) {
-        console.log("Formulario correcto");
+        dispatch( startRegisterEmailPassword(email, password, name) );
       }
     }
 
@@ -39,7 +38,7 @@ export const RegisterScreen = () => {
           dispatch( setError("Email is not valid") );
           return false;
         } 
-        if( password !== confirm_password || password.length < 5 ) {
+        if( password !== confirm_password || password.length <= 5 ) {
           dispatch( setError("Password should be ay least 6 characters and match with other") );
           return false;
         } 
