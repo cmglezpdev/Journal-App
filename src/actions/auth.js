@@ -1,5 +1,5 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
-import { types } from '../types/types'
+import { types } from '../types'
 
 export const startLoginEmailPassword = ( email, password ) => {
     
