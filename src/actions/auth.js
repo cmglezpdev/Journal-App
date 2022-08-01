@@ -2,6 +2,8 @@ import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { types } from '../types'
 import { finishLoading, startLoading } from './ui'
 
+// Login 
+
 export const startLoginEmailPassword = ( email, password ) => {
     
     return ( dispatch ) => {
@@ -19,11 +21,27 @@ export const startGoogleLogin = () => {
     
     return ( dispatch ) => {
         firebase.auth().signInWithPopup( googleAuthProvider )
-            .then( ({ user }) => {
-                dispatch( login(user.uid, user.displayName) );
-            })
+        .then( ({ user }) => {
+            dispatch( login(user.uid, user.displayName) );
+        })
     }
 }
+
+
+export const login = ( uid, displayName ) => ({
+    type: types.login,
+    payload: {
+        displayName,
+        uid
+    }
+})
+
+
+
+
+
+
+// Register
 
 export const startRegisterEmailPassword = ( email, password, name ) => {
     return ( dispatch ) => {
@@ -38,10 +56,16 @@ export const startRegisterEmailPassword = ( email, password, name ) => {
 }
 
 
-export const login = ( uid, displayName ) => ({
-    type: types.login,
-    payload: {
-        displayName,
-        uid
+// Logout
+
+export const startlogout = () => {
+    return async ( dispatch ) => {
+        await firebase.auth().signOut()
+        dispatch( logout() );
     }
+}
+
+
+export const logout = () => ({
+    type: types.logout
 })
