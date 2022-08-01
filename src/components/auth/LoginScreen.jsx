@@ -13,15 +13,15 @@ export const LoginScreen = () => {
   const dispatch = useDispatch();
 
   const [ formValues, handleInputChange ] = useForm({
-    email: "sfssd",
-    password: "1234567"
+    email: "other@gmail.com",
+    password: "123456789"
   })
 
   const { email, password } = formValues;
 
   const handleLogin = ( event ) => {
     event.preventDefault();
-    dispatch( startLoginEmailPassword(email, password) )
+    dispatch( startLoginEmailPassword(email, password) );
   }
 
   const handleGoogleLogin = ( event ) => {
