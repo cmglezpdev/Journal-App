@@ -8,3 +8,4 @@
 
 1. Arreglar las barras de desplazamiento de cada seccion
 2. Poder escribir markdown y que se vea en las notas
+3. Validar el login
