@@ -12,27 +12,39 @@ export const JournalEntry = ({ id, title, body, date, url }) => {
         dispatch( activeNote(id, {body, title, date, url}) )
     }
 
+    const getTitle = () => {
+        if( title.length > 20 ) 
+            return title.substring(0, 20) + "...";
+        return title;
+    }
+
+    const getBody = () => {
+        if( body.length > 100 ) 
+            return body.substring(0, 100) + "...";
+        return body;
+    }
+
+
     return (
         <div 
             className="journal__entry pointer animate__animated animate__backInUp animate__faster" 
             onClick={handleEntryClick}>
         {   
-         url && <div 
-                className="journal__entry-picture"
-                style={{
-                    backgroundSize: 'cover',
-                    backgroundImage: `url(${url})`,
-                }}
-            ></div>
+         url && <img 
+                    src={url}
+                    style={{objectFit:'cover'}}
+                    alt="journal entry"
+                    className="journal__entry-picture"
+                />
         }
         
             <div className="journal__entry-body">
                 <p className="journal__entry-title">
-                    { title }
+                    { getTitle() }
                 </p>
 
                 <p className="journal__entry-content">
-                   { body }
+                   { getBody() }
                 </p>
             </div>
 

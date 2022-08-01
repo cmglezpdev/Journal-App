@@ -11,7 +11,7 @@ export const NoteScreen = () => {
     const dispatch = useDispatch();
     
     const [ formValues, handleInputChange, reset ] = useForm( note );
-    const { body, title, url, id } = formValues;
+    const { body, title, id } = formValues;
 
     const activeId = useRef( note.id );
 
@@ -57,14 +57,14 @@ export const NoteScreen = () => {
                 name="body"
                 onChange={handleInputChange}
             ></textarea>
-            {
+            {/* {
                 url && <div className="notes__image">
                     <img 
                         src={ url } 
                         alt="image_journal_app" 
                     />
                 </div>
-            }
+            } */}
         </div>
 
         <button
