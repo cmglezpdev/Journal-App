@@ -13,7 +13,7 @@ export const JournalScreen = () => {
 
       <main>
         {
-         ( active ) ? ( <NoteScreen /> ) :( <NothingSelected /> ) 
+         ( active ) ? ( <NoteScreen /> ) :( <NothingSelected /> )
         }
       </main>
 

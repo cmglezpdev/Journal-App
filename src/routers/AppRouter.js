@@ -8,6 +8,7 @@ import { login } from "../actions/auth"
 import { PublicRouters } from "./PublicRouters"
 import { PrivateRouters } from "./PrivateRouters"
 import { startLoadingNotes } from "../actions/notes"
+import { Wait } from "../components/Wait"
 
 export const AppRouter = () => {
 
@@ -29,9 +30,7 @@ export const AppRouter = () => {
 
 
     if( checking )
-        return (
-            <h1>Wait...</h1>
-        )
+        return <Wait />
 
     return (
         <Routes>
