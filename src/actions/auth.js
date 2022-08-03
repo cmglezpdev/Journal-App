@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { types } from '../types'
 import { finishLoading, startLoading } from './ui'
@@ -11,7 +12,10 @@ export const startLoginEmailPassword = ( email, password ) => {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(({ user }) => dispatch( login(user.uid, user.displayName) ))
-            .catch(e => console.log(e))
+            .catch(e => {
+                console.log(e)
+                Swal.fire('Error in Login', e.message, 'error');
+            })
             .finally(() => dispatch( finishLoading() ))
 
     }
@@ -23,6 +27,10 @@ export const startGoogleLogin = () => {
         firebase.auth().signInWithPopup( googleAuthProvider )
         .then( ({ user }) => {
             dispatch( login(user.uid, user.displayName) );
+        })
+        .catch(e => {
+            console.log(e)
+            Swal.fire('Error in Login', e.message, 'error');
         })
     }
 }
@@ -51,7 +59,10 @@ export const startRegisterEmailPassword = ( email, password, name ) => {
             await user.updateProfile({ displayName: name })
             dispatch( login(user.uid, user.displayName) );
         })
-        .catch(e => console.log(e))
+        .catch(e => {
+            console.log(e)
+            Swal.fire('Error in Register', e.message, 'error');
+        })
     }
 }
 

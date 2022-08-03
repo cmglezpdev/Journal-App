@@ -39,7 +39,7 @@ export const RegisterScreen = () => {
           return false;
         } 
         if( password !== confirm_password || password.length <= 5 ) {
-          dispatch( setError("Password should be ay least 6 characters and match with other") );
+          dispatch( setError("Password should be least 6 characters and match with other") );
           return false;
         } 
         
